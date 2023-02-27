@@ -1,5 +1,5 @@
 # advanced-angr
-Memeful HKUST Firebird CTF Team training presentation on Angr and Control Flow Graphs made with ❤️ using LaTeX Beamer.
+Memeful CTF training presentation on Angr and Control Flow Graphs made with ❤️ using LaTeX Beamer for the HKUST Firebird CTF Team.
 
 [Handout][handout] • [Slides][slides]
 
