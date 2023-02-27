@@ -1,0 +1,22 @@
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=label] (0) at (0, 5) {\footnotesize\texttt{main}};
+		\node [style=label] (1) at (0, 3) {\footnotesize\texttt{function\_133}};
+		\node [style=label] (2) at (0, 1) {\footnotesize\texttt{function\_376}};
+		\node [style=label] (4) at (0, -1) {\footnotesize\texttt{function\_342}};
+		\node [style=label] (6) at (-4.5, -3) {\footnotesize\texttt{function\_294}};
+		\node [style=label] (7) at (0, -3) {\footnotesize\texttt{function\_8}};
+		\node [style=label] (9) at (4.5, -3) {\footnotesize\texttt{function\_537}};
+		\node [style=label, opacity=0] (bounds1) at (-8, -5) {\footnotesize\texttt{function\_133}};
+		\node [style=label, opacity=0] (bounds2) at (9.5, -3) {\footnotesize\texttt{function\_537}};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [style=one-way arrow] (0) to (1);
+		\draw [style=one-way arrow] (1) to (2);
+		\draw [style=one-way arrow] (2) to (4);
+		\draw [style=one-way arrow] (4) to (7);
+		\draw [style=one-way arrow] (4) to (9);
+		\draw [style=one-way arrow] (4) to (6);
+		\draw [style=one-way arrow, bend left=90, looseness=3.25] (2) to (1);
+	\end{pgfonlayer}
+\end{tikzpicture}

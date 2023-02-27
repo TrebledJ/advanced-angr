@@ -1,0 +1,19 @@
+\begin{tikzpicture}[text height=1.5ex, text depth=0.25ex, yshift=0.5mm,minimum width=35pt,minimum height=25pt]
+    \node[style=basic] (n0) {\footnotesize\texttt{/}};
+    % Boxes.
+    \foreach \x [count=\xi, remember=\xi as \lastxi (initially 0)] in {b,i,n,/,s,h,\textbackslash x00}{
+            \node[style=basic, right=0cm of n\lastxi] (n\xi) {\footnotesize\texttt\x};
+        }
+    % Addresses.
+    \foreach \x in {0,...,7}{
+            \node[style=none, minimum height=5pt, above=0cm of n\x] (t\x) {\tiny\texttt 0x40400\x};
+        }
+    % BV.
+    \node[style=none, below=0.2cm of n7] (bv) {\footnotesize\code{<BV8 47>}};
+    \draw[style=one-way arrow]
+    (n4)
+    to[bend right, out=-80, in=-180]
+    node[below left=-0.3cm and 0.6cm]{
+        \footnotesize\code{state.memory.load(0x404004, 1)}}
+    (bv);
+\end{tikzpicture}

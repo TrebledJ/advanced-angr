@@ -1,0 +1,27 @@
+\begin{tikzpicture}[text depth=0.25ex, yshift=0.5mm,minimum width=35pt,minimum height=25pt]
+    \node[style=basic] (n0) {\footnotesize\texttt{0x44}};
+    % Boxes.
+    \foreach \x [count=\xi, remember=\xi as \lastxi (initially 0)] in {0x43,0x42,0x41}{
+            \node[style=basic, right=0cm of n\lastxi] (n\xi) {\footnotesize\texttt\x};
+        }
+    % Addresses.
+    \foreach \x in {0,...,3}{
+            \node[style=none, minimum height=5pt, above=0cm of n\x] (t\x) {\tiny\texttt 0x40400\x};
+        }
+    \node[right=0.2cm of n3, anchor=west] (text) {(Little Endian)};
+    % % BV.
+    % \node[style=none, align=center] (bv) at (5, -1) {\footnotesize\code{<uint16\_t <BV16 0x4344> at 0x404000>}};
+    
+    % \draw[style=one-way arrow]
+    % (n0.south east) + (0,-0.1cm)
+    % to[bend right, out=-60, in=-175]
+    % node[below left=-0.25cm and -0.2cm]{
+    %     \tiny\code{state.mem[0x404000].uint16\_t}}
+    %     (bv);
+
+    % \node[style=none] (resolved) at (3.5,-2.3) {\footnotesize\code{<BV16 0x4344>}};
+    % \node[style=none] (concrete) at (6.5,-2.3) {\footnotesize\code{0x4344}};
+    % \draw[style=one-way arrow] (bv) to node[left=0.2cm]{\tiny\code{.resolved}} (resolved);
+    % \draw[style=one-way arrow] (bv) to node[right=0.2cm]{\tiny\code{.concrete}} (concrete);
+
+\end{tikzpicture}

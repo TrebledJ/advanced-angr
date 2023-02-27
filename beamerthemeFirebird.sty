@@ -1,0 +1,196 @@
+\usepackage{amsmath}
+
+\definecolor{headercolor}{HTML}{E9EDEE}
+\definecolor{textcolor}{HTML}{666666}
+\definecolor{lightbg}{HTML}{C2D0D3}
+\definecolor{darkbg}{HTML}{8FA9AF}
+\definecolor{darkbg2}{HTML}{C1CCD6}
+\definecolor{blocktext}{HTML}{FFFFFF}
+%775561
+\definecolor{blockdark2}{HTML}{B6D6DD}
+\definecolor{blockbg2}{HTML}{ECFCFF}
+\definecolor{blocktext2}{HTML}{496268}
+\setbeamercolor{footercolor}{bg = headercolor}
+\setbeamercolor{headerleft}{bg = darkbg}
+\setbeamercolor{headerright}{bg = darkbg2}
+
+\setbeamerfont{title}{series=\bfseries,parent=structure}
+\setbeamerfont{subtitle}{size=\small,series=\normalfont,parent=structure}
+
+\setbeamertemplate{title page}
+{
+    \textbf{COMP4901O Competitive Programming in Cybersecurity II}\\
+		\includegraphics[scale = 0.05]{weird_hline}
+    \begin{beamercolorbox}[wd = \paperwidth]{}
+    \vskip25pt
+    \begin{center}
+        \usebeamerfont{title}
+        \inserttitle
+        \\
+        \usebeamerfont{subtitle}
+        \insertsubtitle
+    \end{center}
+    \vspace{40pt}
+            \leftskip = 1 cm
+            \usebeamerfont{author}
+            \insertauthor
+            \\
+            \usebeamerfont{date}
+            \insertdate
+    \end{beamercolorbox}
+    \vfill
+
+    \hfill
+    \includegraphics[scale = 0.13]{firebird-logo}
+}
+
+\newcommand{\optSkipBeforeHeading}{\vskip8pt}
+\newcommand{\optSkipBeforeWeirdBar}{\vskip-8pt}
+\newcommand{\optSkipAfterWeirdBar}{\vskip-6pt}
+
+\newcommand{\TitlePage}
+{{
+	\setbeamertemplate{headline}{}
+	\setbeamertemplate{footline}{}
+    \setbeamercolor{background canvas}{bg = headercolor}
+    \begin{frame}[noframenumbering]
+    \titlepage
+    \end{frame}
+    
+}}
+\setbeamercolor{frametitle}{fg=black}
+\setbeamertemplate{frametitle}
+{
+    \vbox
+    {
+        \strut\bfseries\insertframetitle\\
+        \optSkipBeforeWeirdBar
+        \includegraphics[scale = 0.05]{weird_hline}
+    }
+    \optSkipAfterWeirdBar
+}
+
+\setbeamercolor{headingcolor}{fg=textcolor,bg=headercolor} 
+\setbeamertemplate{headline}{%
+\leavevmode%
+  \hbox{%
+    \begin{beamercolorbox}[wd = \paperwidth]{headingcolor}
+     \hspace*{2ex} \raisebox{-.4\height}{\includegraphics[scale = 0.1]{firebird-icon}}\hyperlinkpresentationstart{Firebird CTF Team} \hfill
+    \tiny{COMP4901O Competitive Programming in Cybersecurity II} \hspace*{1ex}
+    \end{beamercolorbox}}
+   \hbox{%
+   \begin{beamercolorbox}[wd=.5\paperwidth,ht=2.25ex,dp=1ex,right]{headerleft}%
+     \usebeamerfont{section in head/foot}\ \insertsectionhead\hspace*{2ex}
+   \end{beamercolorbox}%
+   \begin{beamercolorbox}[wd=.5\paperwidth,ht=2.25ex,dp=1ex,left]{headerright}%
+     \usebeamerfont{subsection in head/foot}\hspace*{2ex}\insertsubsectionhead
+   \end{beamercolorbox}}%
+   \optSkipBeforeHeading%
+  
+}
+
+\renewcommand{\framesubtitle}[1]{\par\smallskip\textbf{\large#1}\par}
+
+%\setbeamertemplate{footline}{
+%\hbox{
+%\begin{beamercolorbox}[wd=.3\paperwidth,dp=0.4em]{footercolor}%
+%\centering\insertshortauthor
+%  \end{beamercolorbox}\begin{beamercolorbox}[wd=.3\paperwidth,dp=0.4em]{headerleft}\centering
+%   \insertshorttitle
+%   \end{beamercolorbox}\begin{beamercolorbox}[wd=.3\paperwidth,dp=0.4em]{footercolor}%
+%     \centering\insertframenumber{} / inserttotalframenumber\hspace*{2ex}
+%   \end{beamercolorbox}%
+%   }
+%}
+\setbeamertemplate{footline}{
+\hbox{
+\begin{beamercolorbox}[wd=\paperwidth,right]{}%
+     \insertframenumber{} / \inserttotalframenumber\hspace*{2ex}
+   \end{beamercolorbox}%
+   }
+}
+
+\setbeamertemplate{section page}{
+  \begin{beamercolorbox}[sep=8pt,center,shadow=true,rounded=true]{footercolor}
+    \usebeamerfont{title}\insertsectionhead\par%
+  \end{beamercolorbox}
+}
+
+\setbeamertemplate{subsection page}{
+  \begin{beamercolorbox}[sep=8pt,center,shadow=true,rounded=true]{footercolor}
+    \usebeamerfont{title}\insertsubsectionhead\par%
+  \end{beamercolorbox}
+}
+
+\setbeamertemplate{section in toc}[circle]
+\setbeamertemplate{subsection in toc}[circle]
+
+\setbeamertemplate{blocks}[rounded][shadow=false]
+
+
+\newtheorem{insight}{Insight}
+
+
+\makeatletter
+\def\th@exercise{%
+\normalfont % body font
+\setbeamercolor{block title example}{bg=blockdark2,fg=blocktext2}
+\setbeamercolor{block body example}{bg=blockbg2,fg=black}
+\setbeamercolor{example text}{fg=blocktext}
+\def\inserttheoremblockenv{exampleblock}
+}
+
+\AtBeginEnvironment{definition}{%
+\setbeamercolor{block title example}{bg=blockdark2,fg=blocktext2}
+\setbeamercolor{block body example}{bg=blockbg2,fg=black}
+\setbeamercolor{example text}{fg=blocktext}
+\def\inserttheoremblockenv{exampleblock}
+}
+
+\AtBeginEnvironment{corollary}{%
+\setbeamercolor{block title example}{bg=blockdark2,fg=blocktext2}
+\setbeamercolor{block body example}{bg=blockbg2,fg=black}
+\setbeamercolor{example text}{fg=blocktext}
+\def\inserttheoremblockenv{exampleblock}
+}
+
+\AtBeginEnvironment{example}{
+\setbeamercolor{block title example}{bg=darkbg,fg=blocktext}
+\setbeamercolor{block body example}{bg=lightbg,fg=black}
+\setbeamercolor{example text}{fg=blocktext}
+\def\inserttheoremblockenv{exampleblock}
+}
+
+
+\AtBeginEnvironment{theorem}{
+\setbeamercolor{block title example}{bg=darkbg,fg=blocktext}
+\setbeamercolor{block body example}{bg=lightbg,fg=black}
+\setbeamercolor{example text}{fg=blocktext}
+\def\inserttheoremblockenv{exampleblock}
+}
+\def\th@proofn{%
+\normalfont % body font
+\setbeamercolor{block title example}{bg=darkbg,fg=blocktext}
+\setbeamercolor{block body example}{bg=lightbg,fg=black}
+\setbeamercolor{example text}{fg=blocktext}
+\def\inserttheoremblockenv{exampleblock}
+}
+
+\makeatother
+\theoremstyle{proofn}
+\newtheorem{proofn}[theorem]{Proof}
+\theoremstyle{exercise}
+\newtheorem{exercise}[theorem]{Exercise}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{remark}[theorem]{Remark}
+
+\setbeamertemplate{bibliography item}{\insertbiblabel} % Numbers for references
+% If you have more than one page of references, you want to tell beamer
+% to put the continuation section label from the second slide onwards
+\setbeamertemplate{frametitle continuation}[from second]
+% Now get rid of all the colours
+\setbeamercolor*{bibliography entry title}{fg=black}
+\setbeamercolor*{bibliography entry author}{fg=black}
+\setbeamercolor*{bibliography entry location}{fg=black}
+\setbeamercolor*{bibliography entry note}{fg=black}
+\setbeamercolor*{enumerate item}{fg=black}

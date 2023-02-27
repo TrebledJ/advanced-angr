@@ -1,0 +1,16 @@
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=big-node-circle] (0) at (0, 0) {};
+		\node [style=big-node-circle] (1) at (0, -10) {};
+		\node [style=big-node-circle] (3) at (0, -5) {};
+		\node [style=none] (4) at (0, 4) {};
+		\node [style=label, opacity=0] (5) at (4, -0.75) {do-body};
+		\node [style=label, opacity=0] (6) at (-4.25, -5.75) {while};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [style=one-way arrow] (0) to (3);
+		\draw [style=one-way arrow] (4.center) to (0);
+		\draw [style=one-way arrow, bend left=60, looseness=1.50] (3) to (0);
+		\draw [style=one-way arrow] (3) to (1);
+	\end{pgfonlayer}
+\end{tikzpicture}

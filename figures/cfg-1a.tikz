@@ -1,0 +1,24 @@
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=big-node-circle] (0) at (0, 0) {};
+		\node [style=big-node-circle] (1) at (0, -10) {};
+		\node [style=big-node-circle] (2) at (-3, -5) {};
+		\node [style=big-node-circle] (3) at (3, -5) {};
+		\node [style=label] (4) at (4.5, -1) {if};
+		\node [style=label] (5) at (-8, -3.75) {then-branch};
+		\node [style=label] (6) at (8, -6.25) {else-branch};
+		\node [style=label] (7) at (3.75, -9.25) {after};
+		\node [style=none] (8) at (0, 4) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [style=one-way arrow] (0) to (2);
+		\draw [style=one-way arrow] (2) to (1);
+		\draw [style=one-way arrow] (3) to (1);
+		\draw [style=one-way arrow] (0) to (3);
+		\draw [style=thin] (4) to (0);
+		\draw [style=thin] (6) to (3);
+		\draw [style=thin] (7) to (1);
+		\draw [style=thin] (5) to (2);
+		\draw [style=one-way arrow] (8.center) to (0);
+	\end{pgfonlayer}
+\end{tikzpicture}

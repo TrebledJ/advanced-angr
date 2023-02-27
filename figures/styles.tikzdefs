@@ -1,0 +1,73 @@
+\usepackage{expl3}
+\usepackage{xparse}
+% \usepackage[dvipsnames]{xcolor}
+
+\usepackage[T1]{fontenc} 	% Code blocks!
+\usepackage{sourcecodepro}    % Better font?
+% \newcommand{\hideopacity}{0.4}
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{positioning}
+% \usetikzlibrary{spy}
+
+
+\newcommand{\angrModelClassColor}{blue}
+\newcommand{\angrModelCodeColor}{Mulberry}
+
+
+
+
+\ExplSyntaxOn
+% -1: Everything visible.
+\tl_set:Nn \g_model_flow_tl {-1}
+
+% Sets the model flow token list.
+\NewExpandableDocumentCommand \angrModelSetFlow{m} {
+    \tl_set:Nn \g_model_flow_tl {#1}
+}
+
+% Input: token list of the opacities to index by the model flow index.
+\NewExpandableDocumentCommand \angrModelShowList{m} {
+    % Default opacity: 1. Negative indices will index the back (like Python).
+    \tl_item:nn {#1 1} {\g_model_flow_tl}
+}
+
+% Input: token (the "class" of the object).
+% Output: the opacity of the token.
+\NewExpandableDocumentCommand \angrModelOpacity{m} {
+    % Determine the opacity based on the tag.
+    \str_case:nnTF {#1} {
+        % Diagram 1 => \hideopacity, Diagram 2 => 0.
+        {exec}      { \angrModelShowList {0 0       1       {0.4}   {0.4}} }
+        {state}     { \angrModelShowList {1 {0.4}   {0.4}   {0.4}   {0.4}} }
+        {sim}       { \angrModelShowList {1 {0.4}   {0.4}   {0.4}   {0.4}} }
+        {loader}    { \angrModelShowList {0 0       1       {0.4}   {0.4}} }
+        {proj}      { \angrModelShowList {1 {0.4}   {0.4}   {0.4}   {0.4}} }
+        {simgr}     { \angrModelShowList {1 {0.4}   {0.4}   {0.4}   {0.4}} }
+        {explore}   { \angrModelShowList {1 1       {0.4}   {0.4}   {0.4}} }
+        {solver}    { \angrModelShowList {1 {0.4}   {0.4}   {0.4}   {0.4}} }
+        {profit}    { \angrModelShowList {1 {0.4}   {0.4}   {0.4}   {0.4}} }
+        {stconc}    { \angrModelShowList {1 {0.4}   {0.4}   {0.4}   {0.4}} }
+        {more}      { \angrModelShowList {0 0       1       {0.4}   {0.4}} }
+        {morest}    { \angrModelShowList {0 0       1       {0.4}   {0.4}} }
+        {moresim1}  { \angrModelShowList {0 1       {0.4}   {0.4}   {0.4}} }
+        {moresim2}  { \angrModelShowList {0 0       1       {0.4}   {0.4}} }
+        {moreconc}  { \angrModelShowList {0 1       {0.4}   {0.4}   {0.4}} }
+        {analysis}  { \angrModelShowList {0 0       0       1       {0.4}} }
+        {analysis2} { \angrModelShowList {0 0       0       {0.4}   {0.4}} }
+        {debug}     { \angrModelShowList {0 0       0       0       1} }
+    }{}{0}
+}
+
+% Test function.
+\NewExpandableDocumentCommand \angrModelGetOpacity{} {
+    0.5
+}
+
+\NewDocumentCommand \angrModelShowFlow{m} {
+    \angrModelSetFlow{#1}
+    \vskip5pt
+    \centering
+    \resizebox{0.92\textwidth}{!}{\tikzfig{angr-model}}
+}
+
+\ExplSyntaxOff

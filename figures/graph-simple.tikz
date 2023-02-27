@@ -1,0 +1,36 @@
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=node-circle] (0) at (4, 0) {};
+		\node [style=node-circle] (1) at (4, 2) {};
+		\node [style=node-circle] (2) at (4, -2) {};
+		\node [style=label] (3) at (1.25, -1) {node};
+		\node [style=node-circle] (4) at (6, 0) {};
+		\node [style=node-circle] (5) at (8, 0) {};
+		\node [style=node-circle] (6) at (8, -2) {};
+		\node [style=node-circle] (7) at (8, 2) {};
+		\node [style=node-circle] (8) at (6, 2) {};
+		\node [style=node-circle] (9) at (6, -2) {};
+		\node [style=label] (10) at (1.25, 1) {edge};
+		\node [style=none] (12) at (4, 1) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [style=basic-line] (0) to (1);
+		\draw [style=basic-line] (0) to (2);
+		\draw [style=thin] (3) to (2);
+		\draw [style=basic-line] (2) to (4);
+		\draw [style=basic-line] (1) to (8);
+		\draw [style=basic-line] (8) to (7);
+		\draw [style=basic-line] (7) to (5);
+		\draw [style=basic-line] (5) to (6);
+		\draw [style=basic-line] (6) to (9);
+		\draw [style=basic-line] (9) to (2);
+		\draw [style=basic-line] (9) to (4);
+		\draw [style=basic-line] (4) to (6);
+		\draw [style=basic-line] (4) to (5);
+		\draw [style=basic-line] (4) to (7);
+		\draw [style=basic-line] (8) to (4);
+		\draw [style=basic-line] (4) to (0);
+		\draw [style=basic-line] (1) to (4);
+		\draw [style=thin] (10) to (12.center);
+	\end{pgfonlayer}
+\end{tikzpicture}

@@ -1,0 +1,211 @@
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{mathtools}
+\usepackage{xparse}
+
+\usepackage[T1]{fontenc} 	% Code blocks!
+\usepackage{listings} 		% Code blocks!
+\usepackage{textcomp} 		% Code blocks.
+\usepackage{sourcecodepro}  % Better font?
+\usepackage{upquote}
+\usepackage{microtype}      % Suppress ligatures.
+
+% No ligatures for ttfamily.
+\DisableLigatures{encoding = T1, family = tt*}
+
+
+\usepackage{graphicx}
+\graphicspath{{./img/}{./img/content/}}
+
+% CTF GOOOOOOOOOO!
+\usetheme{Firebird}
+
+\usepackage{hyperref}
+\definecolor{links}{HTML}{2A1B81}
+\hypersetup{colorlinks,linkcolor=,urlcolor=links}
+\usepackage{url}
+
+% External hyperlink, different from the colourless internal links used in Beamer navigation.
+% May require [fragile] in slides.
+\NewDocumentCommand\exref{v m}{\href{#1}{\color{links}{\underline{#2}}}}
+
+% Tikz stuff.
+\usepackage{tikzit}         % https://tikzit.github.io/
+\input{figures/styles.tikzstyles}
+\input{figures/styles.tikzdefs}
+\usepackage{tikzpagenodes}
+
+\usepackage[absolute,overlay]{textpos}
+\setlength{\TPHorizModule}{10mm}
+\setlength{\TPVertModule}{10mm}
+
+% Convenience command for drawing a grid.
+\newcommand\ShowGrid{%
+    \tikz[
+        remember picture,
+        overlay,
+        yscale=-1,
+        xstep=\TPHorizModule,ystep=\TPVertModule]
+    \draw (current page.north west) grid (current page.south east);}
+
+\newenvironment{overlaytextblock}{\TPoptions{absolute=false,overlay=false}}{\TPoptions{absolute=true,overlay=true}}
+
+\usepackage{rotating}   % https://en.wikibooks.org/wiki/LaTeX/Rotations
+
+\usepackage{setspace}
+
+% Convenience wrapper for bracketing. \delim* for auto-sizing, \delim[\bigg] for manual sizing.
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}
+\DeclarePairedDelimiter\parens{(}{)}
+\DeclarePairedDelimiter\angles{\langle}{\rangle}
+
+%%%% Useful Macros %%%
+\renewcommand{\o}{\varnothing} % Empty set.
+\newcommand{\N}{\mathbb{N}} % Natural numbers.
+\newcommand{\Z}{\mathbb{Z}} % Integers.
+\newcommand{\Q}{\mathbb{Q}} % Rational numbers.
+\newcommand{\R}{\mathbb{R}} % Real numbers.
+\newcommand{\C}{\mathbb{C}} % Complex numbers.
+\newcommand{\powerset}{\mathcal{P}} % Power set.
+\newcommand{\insum}{\textstyle\sum} % Inline summation.
+\newcommand{\st}{\text{ such that }} % Inline text.
+\newcommand{\order}{\text{order}} % Inline summation.
+\newcommand{\lcm}{\text{lcm}} % Inline summation.
+\newcommand{\Ker}[1]{\text{Ker}\parens*{#1}} % Kernel.
+
+\renewcommand{\epsilon}{\varepsilon}
+\renewcommand{\b}[1]{\!\left(#1\right)}
+
+\newcommand{\xor}{\oplus}
+\newcommand{\cnot}{\centernot}
+
+\newcommand{\code}[1]{\texttt{#1}}
+\newcommand{\codec}[1]{{\color{orange!90!black}\texttt{#1}}}
+\newcommand{\codel}[1]{\lstinline{#1}}
+% \NewDocumentCommand{\codel}{O{} m}{\lstinline[#1]{#2}}
+
+\newcommand{\arr}{\rightarrow\,}
+
+% Slide settings.
+\beamertemplatenavigationsymbolsempty % No nav bar. >:)
+\NewDocumentCommand{\slideref}{mo}{\hyperlink{#1}{\IfNoValueTF {#2} {Slide~\ref*{#1}} {Slide~\ref*{#1}~#2}}}
+
+% Slide footnote size.
+\newcommand{\slidefnsize}{\tiny}
+
+\NewDocumentCommand{\absfootnote}{m}{%
+    \begin{textblock}{10}(1,9.35)%
+        \slidefnsize #1%
+    \end{textblock}%
+}
+
+\NewDocumentCommand{\absfootnoteb}{m}{%
+    \begin{textblock}{10}(1,9.05)%
+        \slidefnsize #1%
+    \end{textblock}%
+}
+
+% Requires [fragile] on frames.
+\NewDocumentCommand{\morefootnote}{O{More} v}{%
+    \begin{textblock}{10}(1,9.35)%
+        \slidefnsize {#1}: {\url{#2}}.%
+    \end{textblock}%
+}
+
+% Absolute-positioned graphic.
+\NewDocumentCommand{\absgraphic} {m O{0cm} O{0cm}} {
+    \begin{tikzpicture}[remember picture,overlay,shift={(current page.north west)}]
+        \node[anchor=north west,xshift=#2,yshift=#3]{#1};
+    \end{tikzpicture}}
+
+% Line spacing.
+\setstretch{1.15}
+
+% Code format.
+
+%% Usage:
+% \begin{lstlisting}[style=plain(, options=...)]
+% # Code goes here.
+% \end{lstlisting}
+
+\lstset{
+    basicstyle = \ttfamily\color{black},
+    keywordstyle = \color{blue!80},
+    stringstyle = \color{Mahogany},
+    % backgroundcolor = \color{WhiteSmoke},
+    breaklines = true,
+    % escapeinside = {(*}{*)},                   % For adding LaTeX in code. (* 1+1 *)
+    extendedchars = true,
+    frame = none,
+    % identifierstyle = \color{blue},
+    keepspaces = true,
+    language = Python,                   		% Change the programming language here!
+    mathescape = true,
+    morekeywords = {*, None},
+    numbers = none, 							% Line-numbers (possible values: none, left, right).
+    numbersep = 10pt,                   		% Distance between line-numbers and code
+    numberstyle=\color{darkgray}, 		        % Style used for line-numbers.
+    rulecolor = \color{black},
+    showstringspaces = false,
+    tabsize = 4,
+    upquote = true,
+}
+
+\lstdefinestyle{plainc}{
+    tabsize = 4,
+    language = C,
+    basicstyle = \footnotesize\ttfamily\color{black},
+    commentstyle = \color{teal},
+    keywordstyle = \color{blue!80},
+    stringstyle = \color{Mahogany},
+}
+
+\lstdefinestyle{plainpy}{
+    basicstyle = \footnotesize\ttfamily\color{black},
+    commentstyle = \color{teal},
+    keywordstyle = \color{blue!80},
+    stringstyle = \color{Mahogany},
+    moredelim = **[is][\only<+>{\color{black}}]{@}{@},
+}
+
+\lstdefinestyle{focuspy}{
+    % Lighter by default.
+    basicstyle = \footnotesize\ttfamily\color{black!40},
+    commentstyle = \itshape\color{teal!40},
+    keywordstyle = \color{blue!40},
+    stringstyle = \color{Mahogany!50},
+    % morekeywords = {*},
+    moredelim = **[is][\only<+>{\color{black}\lstset{style=plainpy}}]{@}{@},
+}
+
+\lstdefinestyle{plain2}{
+    basicstyle = \footnotesize\ttfamily\color{black},
+    commentstyle = \ttfamily\color{black},
+    stringstyle = \color{Mahogany},
+    morekeywords = [1]{int, bool, bytes, BV, SimState, None},
+    keywordstyle = [1]\color{blue!80},
+    morekeywords = [2]{eval},
+    keywordstyle = [2]\color{black},
+    moredelim = [is][\color{black}\lstset{keywordstyle=\color{black}}]{<<}{>>},
+    moredelim = **[is][\only<+>{\color{black}}]{@}{@},
+}
+\lstdefinestyle{focus2}{
+    basicstyle = \footnotesize\ttfamily\color{black!40},
+    commentstyle = \ttfamily\color{black!40},
+    stringstyle = \color{Mahogany!50},
+    morekeywords = [1]{int, bool, bytes, BV, SimState, None},
+    keywordstyle = [1]\color{blue!40},
+    morekeywords = [2]{eval},
+    keywordstyle = [2]\color{black!40},
+    moredelim = [is][\color{black}\lstset{keywordstyle=\color{black}}]{<<}{>>},
+    moredelim = **[is][\only<+>{\color{black}\lstset{style=plain2}}]{@}{@},
+}
+
+% hybrid2: if in handout mode, use plainpy. If in beamer mode, use focuspy.
+\mode<handout>{\lstdefinestyle{hybridpy}{style=plainpy}}
+\mode<beamer>{\lstdefinestyle{hybridpy}{style=focuspy}}
+
+\mode<handout>{\lstdefinestyle{hybrid2}{style=plain2}}
+\mode<beamer>{\lstdefinestyle{hybrid2}{style=focus2}}

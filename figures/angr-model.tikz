@@ -1,0 +1,64 @@
+\begin{tikzpicture}[remember picture]
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none, fill=white, minimum width=1cm, minimum height=0.6cm] (solverDummy) at (6, -4.4) {};
+		\node [style=box, line width=0.6pt, minimum width=6.5cm, minimum height=3.75cm, opacity={\angrModelOpacity{sim}}] (simBox) at (9.75, -1.25) {};
+		\node [style=box, line width=0.6pt, minimum width=3.5cm, minimum height=1.6cm, opacity={\angrModelOpacity{analysis}}] (analysisBox) at (-2, 8) {};
+		\node [style=box, line width=0.6pt, minimum width=3.5cm, minimum height=2cm, opacity={\angrModelOpacity{debug}}] (debugBox) at (-2, -1.5) {};
+		\node [style=basic-rounded, text={\angrModelClassColor}, opacity={\angrModelOpacity{loader}}] (loader) at (6, 9.5) {\href{https://docs.angr.io/core-concepts/loading}{\texttt{cle.Loader}}};
+		\node [style=basic-rounded, text={\angrModelClassColor}, opacity={\angrModelOpacity{proj}}] (project) at (6, 7.25) {\texttt{Project}};
+		\node [style=basic-rounded, text={\angrModelClassColor}, opacity={\angrModelOpacity{state}}] (simstate) at (6, -0.5) {\texttt{\href{https://docs.angr.io/core-concepts/states}{SimState}}};
+		\node [style=basic-rounded, text={\angrModelClassColor}, opacity={\angrModelOpacity{simgr}}] (simgr) at (14.55, 7.25) {\href{https://docs.angr.io/core-concepts/pathgroups}{\texttt{SimulationManager}}};
+		\node [style=basic-rounded, opacity={\angrModelOpacity{exec}}] (exec) at (12.25, -0.5) {\href{https://docs.angr.io/core-concepts/simulation}{Execution Engine}};
+		\node [style=basic-rounded, text={\angrModelClassColor}, opacity={\angrModelOpacity{solver}}] 
+		(solver) at (6.75, -4.4) {\texttt{\href{https://docs.angr.io/core-concepts/solver}{claripy.Solver}}};
+		\node [style=basic-rounded, opacity={\angrModelOpacity{profit}}] (profit) at (6, -10.25) {\href{https://www.youtube.com/watch?v=dQw4w9WgXcQ}{Profit!}};
+		\node [style=label, text={\angrModelCodeColor}, anchor=east, opacity={\angrModelOpacity{proj}}] (11) at (6, 5.65) {\footnotesize \href{https://docs.angr.io/core-concepts/states#state-presets}{\texttt{p.factory.entry\_state()}}};
+		\node [style=label, text={\angrModelCodeColor}, opacity={\angrModelOpacity{exec}}] (12) at (9.25, 1.6) {\footnotesize \href{https://docs.angr.io/core-concepts/states#basic-execution}{\texttt{state.step()}}};
+		\node [style=label, text={\angrModelCodeColor}, opacity={\angrModelOpacity{exec}}] (13) at (11.025, -2.65) {\footnotesize \href{https://docs.angr.io/core-concepts/states#basic-execution}{\texttt{state.step().successors}}};
+		\node [style=label, text={\angrModelCodeColor}, opacity={\angrModelOpacity{simgr}}] (15) at (12.775, 8.525) {\footnotesize \texttt{p.factory.simgr()}};
+		\node [style=label, text={\angrModelCodeColor}, anchor=west, opacity={\angrModelOpacity{explore}}] (21) at (14.75, 5.425) {\footnotesize \href{https://docs.angr.io/core-concepts/pathgroups}{\texttt{simgr.explore()}}};
+		\node [style=label, opacity={\angrModelOpacity{sim}}] (24) at (14.3, 1.875) {Simulation};
+		\node [style=label, text={\angrModelCodeColor}, anchor=west, opacity={\angrModelOpacity{stconc}}] (35) at (6.275, -5.525) {\footnotesize \texttt{state.posix.dumps()}};
+		\node [style=label, text={\angrModelCodeColor}, anchor=west, opacity={\angrModelOpacity{stconc}}] (38) at (6.275, -6.275) {\footnotesize \href{https://docs.angr.io/core-concepts/solver#constraint-solving}{\texttt{state.solver.add()}}};
+		\node [style=label, text={\angrModelCodeColor}, anchor=west, opacity={\angrModelOpacity{moreconc}}] (39) at (6.275, -7.075) {\footnotesize \href{https://docs.angr.io/core-concepts/solver#constraint-solving}{\texttt{state.solver.eval()}}};
+		\node [style=label, text={\angrModelCodeColor}, anchor=west, opacity={\angrModelOpacity{moreconc}}] (36) at (6.275, -7.8) {\footnotesize \href{https://docs.angr.io/core-concepts/states#low-level-interface-for-memory}{\texttt{state.memory}}};
+		\node [style=label, text={\angrModelCodeColor}, anchor=west, opacity={\angrModelOpacity{moreconc}}] (37) at (6.275, -8.475) {\footnotesize \href{https://docs.angr.io/core-concepts/states#review-reading-and-writing-memory-and-registers}{\texttt{state.mem}}};
+		\node [style=label, text={\angrModelCodeColor}, anchor=west, opacity={\angrModelOpacity{moreconc}}] (37) at (6.275, -9.275) {\footnotesize \href{https://docs.angr.io/core-concepts/states#review-reading-and-writing-memory-and-registers}{\texttt{state.regs}}};
+		\node [style=label, text={\angrModelCodeColor}, anchor=west, opacity={\angrModelOpacity{moresim1}}] (43) at (18.775, 8.425) {\footnotesize \href{https://docs.angr.io/core-concepts/pathgroups#stash-types}{\texttt{simgr.found}}};
+		\node [style=label, text={\angrModelCodeColor}, anchor=west, opacity={\angrModelOpacity{moresim1}}] (44) at (18.775, 7.675) {\footnotesize \href{https://docs.angr.io/core-concepts/pathgroups#stash-types}{\texttt{simgr.deadended}}};
+		\node [style=label, text={\angrModelCodeColor}, anchor=west, opacity={\angrModelOpacity{moresim1}}] (42) at (18.775, 6.925) {\footnotesize \href{https://docs.angr.io/core-concepts/pathgroups#stash-types}{\texttt{simgr.stashes}}};
+		\node [style=label, text={\angrModelCodeColor}, anchor=west, opacity={\angrModelOpacity{moresim2}}] (26) at (14.75, 4.675) {\footnotesize \texttt{simgr.run()}};
+		\node [style=label, text={\angrModelClassColor}, anchor=west, opacity={\angrModelOpacity{moresim2}}] (33) at (14.75, 3.925) {\footnotesize \href{https://docs.angr.io/core-concepts/pathgroups#exploration-techniques}{\texttt{exploration\_techniques}}};
+		\node [style=basic-rounded, text={\angrModelClassColor}, opacity={\angrModelOpacity{more}}] (simproc) at (21.275, 0) {\href{https://docs.angr.io/extending-angr/simprocedures}{\texttt{SimProcedure}}};
+		\node [style=basic-rounded, text={\angrModelCodeColor}, opacity={\angrModelOpacity{more}}] (stateopts) at (21.275, -1.5) {\href{https://docs.angr.io/core-concepts/states#state-options}{\texttt{state.options}}};
+		\node [style=label, text={\angrModelCodeColor}, anchor=east, opacity={\angrModelOpacity{morest}}] (32) at (6, 4.9) {\footnotesize \href{https://docs.angr.io/core-concepts/states#state-presets}{\texttt{p.factory.blank\_state()}}};
+		\node [style=label, text={\angrModelCodeColor}, anchor=east, opacity={\angrModelOpacity{morest}}] (40) at (6, 3.4) {\footnotesize \href{https://docs.angr.io/core-concepts/states#state-presets}{\texttt{p.factory.call\_state()}}};
+		\node [style=label, text={\angrModelCodeColor}, anchor=east, opacity={\angrModelOpacity{morest}}] (41) at (6, 4.15) {\footnotesize \href{https://docs.angr.io/core-concepts/states#state-presets}{\texttt{p.factory.full\_init\_state()}}};
+		\node [style=label, anchor=east, opacity={\angrModelOpacity{analysis}}] (59) at (1.525, 8.925) {Analysis};
+		\node [style=label, text={\angrModelCodeColor}, anchor=west, opacity={\angrModelOpacity{analysis}}] (47) at (-5.475, 7.675) {\footnotesize {\href{https://docs.angr.io/core-concepts/analyses}{\texttt{p.analyses}}}};
+		\node [style=label, text={\angrModelCodeColor}, anchor=west, opacity={\angrModelOpacity{analysis2}}] (46) at (-5.475, 6.925) {\footnotesize {\href{https://docs.angr.io/core-concepts/toplevel#the-factory}{\texttt{p.factory.block()}}}};
+		\node [style=label, anchor=east, opacity={\angrModelOpacity{debug}}] (53) at (1.525, -0.125) {Debugging};
+		\node [style=label, text={\angrModelCodeColor}, anchor=west, opacity={\angrModelOpacity{debug}}] (52) at (-5.475, -1.525) {\footnotesize \href{https://docs.angr.io/core-concepts/states#the-callstack-plugin}{\texttt{state.callstack}}};
+		\node [style=label, text={\angrModelCodeColor}, anchor=west, opacity={\angrModelOpacity{debug}}] (51) at (-5.475, -2.275) {\footnotesize \href{https://docs.angr.io/core-concepts/states#the-history-plugin}{\texttt{state.history}}};
+		\node [style=label, text={\angrModelCodeColor}, anchor=west, opacity={\angrModelOpacity{debug}}] (50) at (-5.475, -3.025) {\footnotesize \href{https://docs.angr.io/core-concepts/simulation#breakpoints}{\texttt{state.inspect.b}}};
+		\node [style=none] (simgrAnchor) at (14.55, 2.5) {};
+		\node [style=none] (simProcAnchor) at (16.25, 0) {};
+		\node [style=none] (stateOptsAnchor) at (16.25, -1.5) {};
+		\node [style=none] (analysisAnchor) at (1.5, 7.25) {};
+		\node [style=none] (debuggingAnchor) at (1.5, -0.5) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [style=one-way arrow, opacity={\angrModelOpacity{exec}}, bend left=45] (simstate) to (exec);
+		\draw [style=one-way arrow, opacity={\angrModelOpacity{exec}}, bend left=45] (exec) to (simstate);
+		\draw [style=one-way arrow, opacity={\angrModelOpacity{loader}}] (loader) to (project);
+		\draw [style=one-way arrow, opacity={\angrModelOpacity{proj}}] (project) to (simstate);
+		\draw [style=one-way arrow, opacity={\angrModelOpacity{simgr}}] (project) to (simgr);
+		\draw [style=none, line width=1pt, opacity={\angrModelOpacity{profit}}] (simstate) to (solverDummy.center);
+		\draw [style=one-way arrow, opacity={\angrModelOpacity{profit}}] (solverDummy.center) to (profit);
+		\draw [style=one-way arrow, opacity={\angrModelOpacity{simgr}}] (simgr) to (simgrAnchor.center);
+		\draw [style=one-way arrow, opacity={\angrModelOpacity{more}}] (simproc) to (simProcAnchor.center);
+		\draw [style=one-way arrow, opacity={\angrModelOpacity{more}}] (stateopts) to (stateOptsAnchor.center);
+		\draw [style=one-way arrow, opacity={\angrModelOpacity{analysis}}] (project) to (analysisAnchor.center);
+		\draw [style=one-way arrow, opacity={\angrModelOpacity{debug}}] (simstate) to (debuggingAnchor.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
