@@ -82,8 +82,8 @@ Memeful CTF training presentation on [Angr][angr] and Control Flow Graphs made w
 
 ## Notes
 * Credits for the demo challenges ([existing-tooling](https://github.com/tamuctf/tamuctf-2022/tree/master/reversing/existing-tooling) and [labyrinth](https://github.com/tamuctf/tamuctf-2022/tree/master/reversing/labyrinth)) goes to TAMUctf 2022 organisers.
-* Graphs were made using [TikZiT](https://tikzit.github.io/) (recommend using!).
-* Presentation was delivered over Zoom with [SlidePilot](https://github.com/SlidePilot/SlidePilot-macOS) (also recommend!).
+* TikZ Graphs were made using [TikZiT](https://tikzit.github.io/) (which I recommend using!).
+* Presentation was delivered over Zoom with [SlidePilot](https://github.com/SlidePilot/SlidePilot-macOS) (which I also recommend, if you're a mac user).
 * Firebird Beamer template was provided by a senior member, with some minor adjustments on my end.
 * [Learn LaTeX Beamer][beamer] (Start from Section 3.)
 
