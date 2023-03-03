@@ -1,14 +1,16 @@
 # advanced-angr
-Memeful CTF training presentation on Angr and Control Flow Graphs made with ❤️ using LaTeX Beamer for the HKUST Firebird CTF Team.
+Memeful CTF training presentation on [Angr][angr] and Control Flow Graphs made with ❤️ using LaTeX Beamer for the HKUST Firebird CTF Team.
 
 [Handout][handout] • [Slides][slides]
 
+[angr]: https://github.com/angr/angr
 [handout]: handout.pdf
 [slides]: slides.pdf
 
 ## Contents
 * SOMP1010: angr Management
-    * A 1.5 hour course dedicated to the cultivation of Societal elements in a cOMPuting context.
+    * A 1.5 hour course dedicated to the cultivation of Societal elements in a cOMPuting context, in particular the control over one's angr.
+
 * Intro - 3min
     * What is angr?
     * Motivation
@@ -60,7 +62,7 @@ Memeful CTF training presentation on Angr and Control Flow Graphs made with ❤�
     
 * Analysing Angr Programs - 30min
     * Path explosion
-        * Why analysis? Simple `simgr.explore()` not enough.
+        * Why analysis? Simple `simgr.explore()` is not enough.
     * Graphs Redux
     * What are Control Flow Graphs (CFGs)?
     * CFGs in angr
@@ -79,12 +81,10 @@ Memeful CTF training presentation on Angr and Control Flow Graphs made with ❤�
 * Tips - 3min
 
 ## Notes
-* Credits for the demo challenges ([existing-tooling](https://github.com/tamuctf/tamuctf-2022/tree/master/reversing/existing-tooling) and [labyrinth](https://github.com/tamuctf/tamuctf-2022/tree/master/reversing/labyrinth)) goes to TAMUctf organisers.
+* Credits for the demo challenges ([existing-tooling](https://github.com/tamuctf/tamuctf-2022/tree/master/reversing/existing-tooling) and [labyrinth](https://github.com/tamuctf/tamuctf-2022/tree/master/reversing/labyrinth)) goes to TAMUctf 2022 organisers.
 * Graphs were made using [TikZiT](https://tikzit.github.io/) (recommend using!).
 * Presentation was delivered over Zoom with [SlidePilot](https://github.com/SlidePilot/SlidePilot-macOS) (also recommend!).
 * Firebird Beamer template was provided by a senior member, with some minor adjustments on my end.
+* [Learn LaTeX Beamer][beamer] (Start from Section 3.)
 
-
-
-
-
+[beamer]: http://tug.ctan.org/macros/latex/contrib/beamer/doc/beameruserguide.pdf
