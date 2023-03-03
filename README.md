@@ -5,7 +5,7 @@ Memeful CTF training presentation on [Angr][angr] and Control Flow Graphs made w
 
 [angr]: https://github.com/angr/angr
 [handout]: handout.pdf
-[slides]: slides.pdf
+[slides]: pres.pdf
 
 ## Contents
 * SOMP1010: angr Management
